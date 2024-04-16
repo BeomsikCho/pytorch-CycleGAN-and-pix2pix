@@ -31,7 +31,7 @@ class KaistDataset(BaseDataset):
                     raise FileNotFoundError(f"visible does not exist on {v_dir}")
 
                 cur_lwir_dataset = sorted(make_dataset(lwir_path, max_size))
-                cur_visible_dataset = sorted(make_dataset(lwir_path, max_size)) 
+                cur_visible_dataset = sorted(make_dataset(visible_path, max_size)) 
 
                 for lwir_image, visible_image in zip(cur_lwir_dataset, cur_visible_dataset):
                     lwir_dataset.append(lwir_image)
@@ -45,7 +45,8 @@ class KaistDataset(BaseDataset):
     def __getitem__(self, index):
         lwir_path = self.lwir_dataset[index]
         visible_path = self.visible_dataset[index]
-        
+        print("lwir_path = ", lwir_path)
+        print("visible_path = ", visible_path)
         lwir_image = Image.open(lwir_path).convert('RGB')
         visible_image = Image.open(visible_path).convert('RGB')
         
