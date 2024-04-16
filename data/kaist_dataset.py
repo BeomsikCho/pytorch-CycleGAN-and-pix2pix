@@ -45,8 +45,7 @@ class KaistDataset(BaseDataset):
     def __getitem__(self, index):
         lwir_path = self.lwir_dataset[index]
         visible_path = self.visible_dataset[index]
-        print("lwir_path = ", lwir_path)
-        print("visible_path = ", visible_path)
+        
         lwir_image = Image.open(lwir_path).convert('RGB')
         visible_image = Image.open(visible_path).convert('RGB')
         
